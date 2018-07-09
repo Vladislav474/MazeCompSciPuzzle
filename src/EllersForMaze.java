@@ -1,6 +1,4 @@
-/**
- * Created by eldar on 10/5/2017.
- */
+//this is the maze-generating algorithm, it generates a maze in O(N) time.
 import java.util.Random;
 
 public class EllersForMaze

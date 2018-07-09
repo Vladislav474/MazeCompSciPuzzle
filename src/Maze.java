@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 //main class that calls other classes
 //draws a maze, and places a bot at the start of the maze
-//as the bot moves, its position in the maze is tracked
+//as the bot moves, its position in the maze as well as previously visited cells are tracked
 //if path marking is implemented, that is also tracked.
 public class Maze extends JComponent
 {

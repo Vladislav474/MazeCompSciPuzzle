@@ -1,6 +1,5 @@
-/**
- * Created by eldar on 10/6/2017.
- */
+//this is the actual bot that moves and interacts with the environment
+//the students only interact with this class via the methods available to them from the BotBrain class
 public class Bot
 {
     static final int WALL = 1;

@@ -1,6 +1,4 @@
-/**
- * Created by eldar on 2/10/2017.
- */
+//mini-class used for tracking position within the maze
 public class pos
 {
     private int col, row;
