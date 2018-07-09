@@ -19,75 +19,30 @@ public class Bot
         current = start;
     }
 
-    public boolean moveUp()
+    public boolean moveInDir(int[] dir)
     {
-        boolean moved = checkUp();
+        boolean moved = checkDir(dir);
         if(!isFinished() && moved)
         {
-            current.setRow(current.getRow()-1);
+            current.setRow(current.getRow()+dir[0]);
+            current.setCol(current.getCol()+dir[1]);
             parent.updateBotLocation(current);
         }
         return moved;
     }
-    public boolean moveDown()
+    public boolean checkDir(int[] dir)
     {
-        boolean moved = checkDown();
-        if(!isFinished() && moved)
-        {
-            current.setRow(current.getRow()+1);
-            parent.updateBotLocation(current);
+        boolean leftRight = dir[1] != 0;
+        boolean upDown = dir[0] != 0;
+        if(leftRight){
+            if(current.getCol()+dir[1]>=0&&current.getCol()+dir[1]<=maze.length-1){
+                return maze[current.getRow()][current.getCol()+dir[1]] != WALL;
+            }
         }
-        return moved;
-    }
-    public boolean moveLeft()
-    {
-        boolean moved = checkLeft();
-        if (!isFinished() && moved)
-        {
-            current.setCol(current.getCol()-1);
-            parent.updateBotLocation(current);
-        }
-        return moved;
-    }
-    public boolean moveRight()
-    {
-        boolean moved = checkRight();
-        if (!isFinished() && moved)
-        {
-            current.setCol(current.getCol()+1);
-            parent.updateBotLocation(current);
-        }
-        return moved;
-    }
-    public boolean checkUp()
-    {
-        if(current.getRow()>1)
-        {
-            return maze[current.getRow()-1][current.getCol()] != WALL;
-        }
-        return false;
-    }
-    public boolean checkDown()
-    {
-        if(current.getRow()< maze.length-1)
-        {
-            return maze[current.getRow()+1][current.getCol()] != WALL;
-        }
-        return false;
-    }
-    public boolean checkLeft()
-    {
-        if(current.getCol() > 0)
-        {
-            return maze[current.getRow()][current.getCol()-1] != WALL;
-        }
-        return false;
-    }
-    public boolean checkRight()
-    {
-        if(current.getCol() < maze[0].length-1)
-        {
-            return maze[current.getRow()][current.getCol()+1] != WALL;
+        else if(upDown){
+            if(current.getRow()+dir[0]>=0&&current.getRow()+dir[0]<=maze[0].length-1){
+                return maze[current.getRow()+dir[0]][current.getCol()] != WALL;
+            }
         }
         return false;
     }
@@ -97,24 +52,9 @@ public class Bot
         maze[current.getRow()][current.getCol()] = MARK;
         parent.updateMarks(current);
     }
-    public boolean upIsMarked()
+    public boolean dirIsMarked(int[] dir)
     {
-        if(checkUp()){ return maze[current.getRow()-1][current.getCol()] == MARK; }
-        return false;
-    }
-    public boolean downIsMarked()
-    {
-        if(checkDown()){ return maze[current.getRow()+1][current.getCol()] == MARK; }
-        return false;
-    }
-    public boolean rightIsMarked()
-    {
-        if(checkRight()){ return maze[current.getRow()][current.getCol()+1] == MARK; }
-        return false;
-    }
-    public boolean leftIsMarked()
-    {
-        if(checkLeft()){ return maze[current.getRow()][current.getCol()-1] == MARK; }
+        if(checkDir(dir)){ return maze[current.getRow()+dir[0]][current.getCol()+dir[1]] == MARK; }
         return false;
     }
     public boolean isFinished()

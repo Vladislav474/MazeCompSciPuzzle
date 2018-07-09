@@ -1,6 +1,8 @@
 /**
  * Created by eldar on 10/6/2017.
  */
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 
@@ -10,17 +12,22 @@ import java.util.Vector;
 //but it is obviously a very inefficient implementation and they ought to aim for a better one
 public class BotBrain
 {
-    static final int UP = 0;
-    static final int RIGHT = 1;
-    static final int DOWN = 2;
-    static final int LEFT = 3;
-
+    static final int[] UP = {1,0};
+    static final int[] RIGHT = {0,1};
+    static final int[] DOWN = {-1,0};
+    static final int[] LEFT = {0,-1};
+    List<int[]> directions;
 
     private Bot bot;
 
     public BotBrain(Bot bot)
     {
         this.bot = bot;
+        directions = new LinkedList<>();
+        directions.add(UP);
+        directions.add(DOWN);
+        directions.add(LEFT);
+        directions.add(RIGHT);
     }
     public void solveMaze()
     {
@@ -30,20 +37,16 @@ public class BotBrain
 
     private void randomMouse()
     {
-        Vector<Integer> possibleDirections = new Vector<Integer>();
+        List<int[]> possibleDirections = new LinkedList<>();
         Random rng = new Random();
 
         while(!bot.isFinished())
         {
-            if(bot.checkUp()){possibleDirections.add(UP);}
-            if(bot.checkDown()){possibleDirections.add(DOWN);}
-            if(bot.checkLeft()){possibleDirections.add(LEFT);}
-            if(bot.checkRight()){possibleDirections.add(RIGHT);}
+            for(int[] direction : directions){
+                if(bot.checkDir(direction)){possibleDirections.add(direction);}
+            }
             int dir = rng.nextInt(possibleDirections.size());
-            if(possibleDirections.elementAt(dir)==UP){bot.moveUp();}
-            else if(possibleDirections.elementAt(dir)==DOWN){bot.moveDown();}
-            else if(possibleDirections.elementAt(dir)==RIGHT){bot.moveRight();}
-            else {bot.moveLeft();}
+            bot.moveInDir(possibleDirections.get(dir));
             possibleDirections.clear();
         }
         return;
