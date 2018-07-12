@@ -35,12 +35,12 @@ public class Bot
         boolean leftRight = dir[1] != 0;
         boolean upDown = dir[0] != 0;
         if(leftRight){
-            if(current.getCol()+dir[1]>=0&&current.getCol()+dir[1]<=maze.length-1){
+            if(current.getCol()+dir[1]>=0&&current.getCol()+dir[1]<=maze[0].length-1){
                 return maze[current.getRow()][current.getCol()+dir[1]] != WALL;
             }
         }
         else if(upDown){
-            if(current.getRow()+dir[0]>=0&&current.getRow()+dir[0]<=maze[0].length-1){
+            if(current.getRow()+dir[0]>=0&&current.getRow()+dir[0]<=maze.length-1){
                 return maze[current.getRow()+dir[0]][current.getCol()] != WALL;
             }
         }
