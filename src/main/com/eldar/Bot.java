@@ -1,3 +1,5 @@
+package com.eldar;
+
 //this is the actual bot that moves and interacts with the environment
 //the students only interact with this class via the methods available to them from the BotBrain class
 public class Bot
@@ -19,6 +21,7 @@ public class Bot
         current = start;
     }
 
+    //приказывает роботу двинутся в этом направлении
     public boolean moveInDir(int[] dir)
     {
         boolean moved = checkDir(dir);
@@ -30,6 +33,8 @@ public class Bot
         }
         return moved;
     }
+
+    //приказывает роботу проверить, если возможно двинутся в том направлении
     public boolean checkDir(int[] dir)
     {
         boolean leftRight = dir[1] != 0;
@@ -47,11 +52,17 @@ public class Bot
         return false;
     }
 
+    //приказывает роботу пометить текущую комнату
+    //после того, как комната помечена, она остается помеченной
     public void markRoom()
     {
         maze[current.getRow()][current.getCol()] = MARK;
         parent.updateMarks(current);
     }
+
+    //проверяет, если проход в данном направлении помечен
+    //возвращает false если в том направлении нет прохода
+    //и если в том направлении помеченный проход
     public boolean dirIsMarked(int[] dir)
     {
         if(checkDir(dir)){ return maze[current.getRow()+dir[0]][current.getCol()+dir[1]] == MARK; }

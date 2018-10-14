@@ -1,6 +1,7 @@
-/**
- * Created by eldar on 2/10/2017.
- */
+package com.eldar;
+
+import com.eldar.bot_brains.BotBrain;
+import com.eldar.bot_brains.BotBrainEEM;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -12,8 +13,8 @@ import java.util.ArrayList;
 public class Maze extends JComponent
 {
     JOptionPane jOptionPane;
-    EllersForMaze mazeGenerator = new EllersForMaze(200,400);
-    int squareSize = 2;
+    EllersForMaze mazeGenerator = new EllersForMaze(100,200);
+    int squareSize = 4;
     pos start;
     pos finish;
     pos current;
@@ -41,8 +42,8 @@ public class Maze extends JComponent
     {
         start = new pos(mazeGenerator.getStart().getCol(), mazeGenerator.getStart().getRow());
         finish = new pos(mazeGenerator.getStart().getCol(), mazeGenerator.getFinish().getRow());
-        trailArray = new ArrayList<pos>();
-        markedArray = new ArrayList<pos>();
+        trailArray = new ArrayList<>();
+        markedArray = new ArrayList<>();
         ourBot = new Bot(mazeGenerator.getMaze(),mazeGenerator.getStart(),mazeGenerator.getFinish(), this);
         current = ourBot.getCurrent();
         validate();
@@ -68,8 +69,8 @@ public class Maze extends JComponent
 
         int index = 0;
         long startTime = System.currentTimeMillis();
-        BotBrain algorithm = new BotBrain(ourBot);
-        algorithm.solveMaze();
+        BotBrain algorithm = new BotBrainEEM();
+        algorithm.solveMaze(ourBot);
         algoRunTime = System.currentTimeMillis() - startTime;
         algoRunTime/=1000;
 
