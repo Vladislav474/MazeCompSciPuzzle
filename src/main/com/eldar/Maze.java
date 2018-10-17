@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class Maze extends JComponent
 {
     JOptionPane jOptionPane;
-    EllersForMaze mazeGenerator = new EllersForMaze(100,200);
-    int squareSize = 4;
+    EllersForMaze mazeGenerator = new EllersForMaze(200,400);
+    int squareSize = 2;
     pos start;
     pos finish;
     pos current;
