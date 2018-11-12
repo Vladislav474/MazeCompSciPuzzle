@@ -1,7 +1,7 @@
 package com.eldar;
 
 import com.eldar.bot_brains.BotBrain;
-import com.eldar.bot_brains.BotBrainEEM;
+import com.eldar.bot_brains.BotBrainGRSh474;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class Maze extends JComponent
 {
     JOptionPane jOptionPane;
-    EllersForMaze mazeGenerator = new EllersForMaze(200,400);
-    int squareSize = 2;
+    EllersForMaze mazeGenerator = new EllersForMaze(400,800);
+    int squareSize = 1;
     pos start;
     pos finish;
     pos current;
@@ -69,12 +69,12 @@ public class Maze extends JComponent
 
         int index = 0;
         long startTime = System.currentTimeMillis();
-        BotBrain algorithm = new BotBrainEEM();
+        BotBrain algorithm = new BotBrainGRSh474();
         algorithm.solveMaze(ourBot);
         algoRunTime = System.currentTimeMillis() - startTime;
-        algoRunTime/=1000;
+        //algoRunTime/=1000;
 
-        JOptionPane.showMessageDialog(null,"Поздравляю, ваш алгоритм решил лабиринт за " +algoRunTime +" секунд" );
+        JOptionPane.showMessageDialog(null,"Поздравляю, ваш алгоритм решил лабиринт за " +algoRunTime +" миллисекунд" );
 
     }
 
