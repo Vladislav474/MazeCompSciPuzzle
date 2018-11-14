@@ -1,4 +1,4 @@
-package com.eldar;//this is the maze-generating algorithm, it generates a maze in O(N) time.
+package main.com.eldar;//this is the maze-generating algorithm, it generates a maze in O(N) time.
 import java.util.Random;
 
 public class EllersForMaze
