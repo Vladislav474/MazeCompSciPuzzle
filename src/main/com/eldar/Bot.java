@@ -1,4 +1,4 @@
-package com.eldar;
+package main.com.eldar;
 
 //this is the actual bot that moves and interacts with the environment
 //the students only interact with this class via the methods available to them from the BotBrain class
