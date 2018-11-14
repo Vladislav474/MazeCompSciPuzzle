@@ -20,21 +20,21 @@ public class BotBrainGRSh474 implements BotBrain {
   {
       while(!bot.isFinished()){
       for(;;){
-          if(bot.checkDir((Direction.get()))&&!bot.checkDir(Direction.get_clockwise_rot())){
+          if(bot.checkDir((Direction.get()))&&!bot.checkDir(Direction.get_clockwise_rot())){//если можем двигаться прямо и не можем направо
           bot.moveInDir(Direction.get());
           if(bot.isFinished())break;
           }
-          else if(bot.checkDir(Direction.get_clockwise_rot())){
+          else if(bot.checkDir(Direction.get_clockwise_rot())){//если путь направо есть
               Direction.set_clockwise_rot();
               bot.moveInDir(Direction.get());
               break;
             }
-          else if(bot.checkDir(Direction.get_counterclockwise_rot())){
+          else if(bot.checkDir(Direction.get_counterclockwise_rot())){//если есть путь налево, но нет прямо и направо
               Direction.set_counterclockwise_rot();
               bot.moveInDir(Direction.get());
               break;
             }
-          else{
+          else{ //если путей нет - необходимо развернуться
           Direction.reverse_bot();
           bot.moveInDir(Direction.get());
           }
