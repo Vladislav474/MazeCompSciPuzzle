@@ -1,4 +1,4 @@
-package com.eldar;
+package main.com.eldar;
 
 import java.util.Objects;
 
