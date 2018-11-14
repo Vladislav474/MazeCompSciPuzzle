@@ -1,6 +1,6 @@
-package main.com.eldar.bot_brains;
+package com.eldar.bot_brains;
 
-import main.com.eldar.Bot;
+import com.eldar.Bot;
 
 //Интерфейс, который определяет поведение любой имплементации BotBrain
 public interface BotBrain {

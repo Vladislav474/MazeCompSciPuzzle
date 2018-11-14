@@ -1,5 +1,5 @@
-package main.com.eldar.bot_brains;
-import main.com.eldar.Bot;
+package com.eldar.bot_brains;
+import com.eldar.Bot;
 import java.util.Random;
 
 public class BotBrainGRSh474 implements BotBrain {

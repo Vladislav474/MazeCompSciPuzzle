@@ -1,8 +1,8 @@
-package main.com.eldar.bot_brains;
-import static main.com.eldar.bot_brains.BotBrain.DOWN;
-import static main.com.eldar.bot_brains.BotBrain.LEFT;
-import static main.com.eldar.bot_brains.BotBrain.RIGHT;
-import static main.com.eldar.bot_brains.BotBrain.UP;
+package com.eldar.bot_brains;
+import static com.eldar.bot_brains.BotBrain.DOWN;
+import static com.eldar.bot_brains.BotBrain.LEFT;
+import static com.eldar.bot_brains.BotBrain.RIGHT;
+import static com.eldar.bot_brains.BotBrain.UP;
 import java.util.ArrayList;
 import java.util.List;
 
