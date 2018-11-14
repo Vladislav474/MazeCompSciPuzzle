@@ -1,7 +1,7 @@
-package com.eldar;
+package main.com.eldar;
 
-import com.eldar.bot_brains.BotBrain;
-import com.eldar.bot_brains.BotBrainGRSh474;
+import main.com.eldar.bot_brains.BotBrain;
+import main.com.eldar.bot_brains.BotBrainGRSh474;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
